@@ -1,0 +1,20 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% extends "base.html" %}
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'overrides/assets/stylesheets/main.bf3dc0a9.min.css' | url }}">
+{% endblock %}
+{% block announce %}
+  <a href="https://github.com/darmarj">
+    For updates follow <strong>NEWs</strong> on
+    <span class="twemoji twitter">
+      {% include ".icons/fontawesome/brands/github-alt.svg" %}
+    </span>
+    <strong>Github</strong>
+  </a>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ 'overrides/assets/javascripts/bundle.525231ca.min.js' | url }}"></script>
+{% endblock %}
