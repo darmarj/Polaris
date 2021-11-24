@@ -10,11 +10,9 @@ search:
   }
 </style>
 
-# Blog
-
 ## [Wd Skype]
 
-__This is the story of the time onboard. Most of in spirite on stay on focus and pay aggressive for the next step! __
+__This is the story of the time onboard. Most of in spirite on stay on focus and pay aggressive for the next step!__
 
 <aside class="mdx-author" markdown>
 ![@darmarj][@darmarj avatar]
@@ -26,6 +24,8 @@ __This is the story of the time onboard. Most of in spirite on stay on focus and
 [:octicons-tag-24: 7.2.6+insiders-3.0.0][insiders-3.0.0]
 </span>
 </aside>
+
+[@darmarj avatar]: https://avatars.githubusercontent.com/u/94155500
 
 ---
 
