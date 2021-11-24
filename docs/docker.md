@@ -35,7 +35,7 @@ But Docker, being older than Kubernetes, doesn’t implement CRI. So that’s wh
 
 ??? question "What is a shim?"
 
-  In tech terms, a shim is a component in a software system, which acts as a bridge between different APIs, or as a compatibility layer. A shim is sometimes added when you want to use a third-party component, but you need a little bit of glue code to make it work.
+    In tech terms, a __shim__ is a component in a software system, which acts as a bridge between different APIs, or as a compatibility layer. A shim is sometimes added when you want to use a third-party component, but you need a little bit of glue code to make it work.
 
 Going forward, Kubernetes will remove support for Docker directly, and prefer to use only container runtimes that implement its Container Runtime Interface. This probably means using containerd or CRI-O.
 
