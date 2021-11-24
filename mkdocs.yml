@@ -32,7 +32,7 @@ repo_url: https://github.com/darmarj
 edit_uri: ""
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2021 Martin Donath
+copyright: Copyright &copy; 2021 ~ Present Darmarj.M
 
 # Configuration
 theme:
@@ -141,8 +141,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: squidfunk
-      repo: mkdocs-material
+      user: darmarj
+      repo: MkdocsMaterial-K8s
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
