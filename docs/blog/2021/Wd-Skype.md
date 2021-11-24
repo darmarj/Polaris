@@ -27,25 +27,6 @@ __This is the story of the time onboard. Most of in spirite on stay on focus and
 
 ---
 
-The [search] of Material for MkDocs is by far one of its best and most-loved
-assets: [multilingual], [offline-capable], and most importantly: _all
-client-side_. It provides a solution to empower the users of your documentation
-to find what they're searching for instantly without the headache of managing
-additional servers. However, even though several iterations have been made,
-there's still some room for improvement, which is why we rebuilt the search
-plugin and integration from the ground up. This article shines some light on the
-internals of the new search, why it's much more powerful than the previous
-version, and what's about to come.
-
-_The next section discusses the architecture and issues of the current search
-implementation. If you immediately want to learn what's new, skip to the
-[section just after that][What's new]._
-
-[search]: ../../setup/setting-up-site-search.md
-[multilingual]: ../../setup/setting-up-site-search.md#lang
-[offline-capable]: ../../setup/setting-up-site-search.md#offline-searc
-[what's new]: #whats-new
-
 ## Architecture
 
 Material for MkDocs uses [lunr] together with [lunr-languages] to implement
@@ -64,7 +45,6 @@ const index$ = document.forms.namedItem("search")
 
 [lunr]: https://lunrjs.com
 [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
-[built-in search plugin]: ../../setup/setting-up-site-search.md#built-in-search
 
 ## What's new?
 
