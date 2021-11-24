@@ -5,6 +5,7 @@ on:
       - main
       - Mac
       - Lux-W
+      - Lux-P
 jobs:
   deploy:
     runs-on: ubuntu-latest
