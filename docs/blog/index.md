@@ -10,7 +10,7 @@ search:
   }
 </style>
 
-## [Wd Skype]
+## Wd Skype
 
 __This is the story of the time onboard. Most of in spirite on stay on focus and pay aggressive for the next step!__
 
