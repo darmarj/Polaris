@@ -29,12 +29,8 @@ __This is the story of the time onboard. Most of in spirite on stay on focus and
 
 ---
 
-The [search] of Material for MkDocs is by far one of its best and most-loved
-assets: [multilingual], [offline-capable], and most importantly: _all
-client-side_. It provides a solution to empower the users of your documentation
-to find what they're searching for instantly without the headache of managing
-additional servers.
+A daemon for Linux and Windows. It manages the complete container lifecycle of its host system, from image transfer and storage to container execution and supervision to low-level storage to network attachments and beyond.
 
-[:octicons-arrow-right-24: Continue reading][Wd Skype]
+[:octicons-arrow-right-24: Continue reading][CNCF-Containerd]
 
-[Wd Skype]: 2021/Wd-Skype.md
+[CNCF-Containerd]: 2021/CNCF-Containerd.md
