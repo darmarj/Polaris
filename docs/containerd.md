@@ -29,7 +29,7 @@ For example, Red Hat’s OpenShift uses __CRI-O__, and offers support for it. Do
 In Kubernetes architecture, the kubelet (the agent that runs on each node) is responsible for sending instructions to the container runtime to start and run containers.
 
 You can check which container runtime you’re using by looking at the kubelet parameters on each node. There’s an option --container-runtime and --container-runtime-endpoint which are used to configure which runtime to use.
-</details> -->
+</details> --> 
 
 ??? question "How to check your container runtime in Kubernetes?"
 
