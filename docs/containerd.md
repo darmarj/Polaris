@@ -33,7 +33,7 @@ You can check which container runtime you’re using by looking at the kubelet p
 
 ??? question "How to check your container runtime in Kubernetes?"
 
-In Kubernetes architecture, the __kubelet__ (the agent that runs on each node) is responsible for sending instructions to the container runtime to start and run containers.
+    In Kubernetes architecture, the __kubelet__ (the agent that runs on each node) is responsible for sending instructions to the container runtime to start and run containers.
 
 You can check which container runtime you’re using by looking at the __kubelet__ parameters on each node. There’s an option **--container-runtime**{: style="color: green; opacity: 0.60"} and **--container-runtime-endpoint**{: style="color: green; opacity: 0.60"} which are used to configure which runtime to use.
 
@@ -67,11 +67,11 @@ __runc__ is an OCI-compatible container runtime. It implements the OCI specifica
 __runc__ is called the reference implementation of OCI.
 
 ??? question "What is a reference implementation?"
-A reference implementation is a piece of software that has implemented all the requirements of a specification or standard.
+    A reference implementation is a piece of software that has implemented all the requirements of a specification or standard.
 
-It’s usually the first piece of software which is developed from the specification.
+    It’s usually the first piece of software which is developed from the specification.
 
-In the case of OCI, __runc__ provides all the features expected of an OCI-compliant runtime, although anyone can implement their own OCI runtime if they like.
+    In the case of OCI, __runc__ provides all the features expected of an OCI-compliant runtime, although anyone can implement their own OCI runtime if they like.
 
 runc provides all of the low-level functionality for containers, interacting with existing low-level Linux features, like namespaces and control groups. It uses these features to create and run container processes.
 
@@ -85,7 +85,7 @@ A couple of alternatives to __runc__ are:
 
 ??? question "What's the equivalent of runc on Windows?"
 
- __runc__ is a tool for running containers on Linux. So that means it runs on Linux, on bare metal or inside a VM.
+    __runc__ is a tool for running containers on Linux. So that means it runs on Linux, on bare metal or inside a VM.
 
 On Windows, it’s slightly different. The equivalent of runc is Microsoft’s Host Compute Service (HCS). It includes a tool called runhcs, which itself is a fork of runc, and also implements the Open Container Initiative specification.
 
