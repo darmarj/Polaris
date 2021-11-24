@@ -38,4 +38,3 @@ additional servers.
 [:octicons-arrow-right-24: Continue reading][Wd Skype]
 
 [Wd Skype]: 2021/Wd-Skype.md
-[insiders-3.0.0]: ../insiders/changelog.md#3.0.0
