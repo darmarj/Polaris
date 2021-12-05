@@ -7,16 +7,16 @@ Docker – A developer-oriented software with a high level interface that lets y
 
 We have to start with Docker because it’s the most popular developer tool for working with containers. And for a lot of people, the name “Docker” itself is synonymous with the word “container”.
 
-Docker kick-started this whole revolution. Docker created a very ergonomic (nice-to-use) tool for working with containers – also called <backgrd class="rouge">docker</backgrd>.
+Docker kick-started this whole revolution. Docker created a very ergonomic (nice-to-use) tool for working with containers – also called<span class="rouge">docker</span>.
 
 ## Container in Docker
 [![Docker](Containerd-Runtime/Docker.png)](Containerd-Runtime/Docker.png "Docker")
 
-<backgrd class="rouge">docker</backgrd> is designed to be installed on a workstation or server and comes with a bunch of tools to make it easy to build and run containers as a developer, or DevOps person.
+<span class="rouge">docker</span> is designed to be installed on a workstation or server and comes with a bunch of tools to make it easy to build and run containers as a developer, or DevOps person.
 
-The <backgrd class="rouge">docker</backgrd> command line tool can build container images, pull them from registries, create, start and manage containers.
+The <span class="rouge">docker</span> command line tool can build container images, pull them from registries, create, start and manage containers.
 
-To make all of this happen, the experience you know as <backgrd class="rouge">docker</backgrd> is now comprised of these projects (there are others, but these are the main ones):
+To make all of this happen, the experience you know as <span class="rouge">docker</span> is now comprised of these projects (there are others, but these are the main ones):
 
 - docker-cli: This is the command-line utility that you interact with using docker ... commands.
 
@@ -24,7 +24,7 @@ To make all of this happen, the experience you know as <backgrd class="rouge">do
 
 - runc: This is the low-level container runtime (the thing that actually creates and runs containers). It includes libcontainer, a native Go-based implementation for creating containers.
 
-In reality, when you run a container with <backgrd class="rouge">docker</backgrd>, you’re actually running it through the Docker daemon, containerd, and then runc.
+In reality, when you run a container with <span class="rouge">docker</span>, you’re actually running it through the Docker daemon, containerd, and then runc.
 
 ## Dockershim: Docker in Kubernetes
 Kubernetes includes a component called __dockershim__, which allows it to support Docker.
