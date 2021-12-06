@@ -22,6 +22,9 @@
     transform: scale(1.15);
   }
 }
+:root > * {
+  --md-keyword-bg-color: rgba(231, 175, 250, 0.952);
+}
 .md-typeset .twitter {
   color: #00acee;
 }
@@ -331,8 +334,8 @@
 .md-typeset .mdx-sponsorship-total {
   font-weight: 700;
 }
-.md-typeset backgrd.rouge {
-    background-color: rgba(247, 226, 254, 1);
+.md-typeset .rouge {
+    background-color: var(--md-keyword-bg-color);
     padding: 2px 4px; 
     border-radius: 5px;
 }
