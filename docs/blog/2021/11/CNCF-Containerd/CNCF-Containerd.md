@@ -15,4 +15,4 @@ __A daemon for Linux and Windows. It manages the complete container lifecycle of
 
 ![Architecture]
 
-[Architecture]: CNCF-Containerd/Architecture.png
+[Architecture]: ../Screenshot/Architecture.png
