@@ -2,7 +2,8 @@
 template: overrides/main.html
 ---
 
-## Abstract
+# Abstract
+
 Docker – A developer-oriented software with a high level interface that lets you easily build and run containers from your terminal. It now uses containerd as its container runtime.
 
 We have to start with Docker because it’s the most popular developer tool for working with containers. And for a lot of people, the name “Docker” itself is synonymous with the word “container”.
@@ -10,6 +11,7 @@ We have to start with Docker because it’s the most popular developer tool for 
 Docker kick-started this whole revolution. Docker created a very ergonomic (nice-to-use) tool for working with containers – also called<span class="rouge">docker</span>.
 
 ## Container in Docker
+
 [![Docker](Containerd-Runtime/Docker.png)](Containerd-Runtime/Docker.png "Docker")
 
 <span class="rouge">docker</span> is designed to be installed on a workstation or server and comes with a bunch of tools to make it easy to build and run containers as a developer, or DevOps person.
@@ -27,6 +29,7 @@ To make all of this happen, the experience you know as <span class="rouge">docke
 In reality, when you run a container with <span class="rouge">docker</span>, you’re actually running it through the Docker daemon, containerd, and then runc.
 
 ## Dockershim: Docker in Kubernetes
+
 Kubernetes includes a component called __dockershim__, which allows it to support Docker.
 
 Kubernetes prefers to run containers through any __container runtime__ which supports its __Container Runtime Interface (CRI)__.
@@ -44,6 +47,7 @@ __But this doesn’t mean that Kubernetes won’t be able to run Docker-formatte
 Phew. Hope that cleared that up.
 
 ## Docker images
+
 __What many people refer to as Docker images, are actually images packaged in the Open Container Initiative (OCI) format.__
 
 So if you pull an image from Docker Hub, or another registry, you should be able to use it with the docker command, or on a Kubernetes cluster, or with the podman utility, or any other tool that supports the OCI image format spec.
