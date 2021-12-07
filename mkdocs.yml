@@ -169,4 +169,6 @@ nav:
     - blog/index.md
     - 2021:
       - blog/2021/11/CNCF-Containerd/CNCF-Containerd.md
+      - blog/2021/12/Proxmox/Proxmox-Source.md
+      - blog/2021/12/Proxmox/Proxmox-Subscript.md
       

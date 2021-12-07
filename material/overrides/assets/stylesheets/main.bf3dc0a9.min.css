@@ -197,7 +197,6 @@
   text-align: center;
   display: block;
   width: 80px;
-  /* display: -webkit-inline-flex; */
 }
 .md-typeset .mdx-iconsearch {
   background-color: var(--md-default-bg-color);
