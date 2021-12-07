@@ -190,12 +190,14 @@
   background-color: var(--md-primary-bg-color);
   border-color: var(--md-primary-bg-color);
   color: #894da8;
-  margin: 0;
-  position: relative;
-  top: 15%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  /* position: relative; */
+  margin: 20px auto;
+  padding: 6px;
+  border-radius: 6px;
+  text-align: center;
+  display: block;
+  width: 80px;
+  /* display: -webkit-inline-flex; */
 }
 .md-typeset .mdx-iconsearch {
   background-color: var(--md-default-bg-color);
