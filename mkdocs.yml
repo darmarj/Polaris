@@ -164,6 +164,8 @@ nav:
     - Containerd: containerd.md
     - Docker: docker.md
     - Kubernetes: kubernetes.md
+  - Rancher:
+    - K3s: K3s/K3s.md
   
   - Blog:
     - blog/index.md
@@ -171,4 +173,7 @@ nav:
       - blog/2021/11/CNCF-Containerd/CNCF-Containerd.md
       - blog/2021/12/Proxmox/Proxmox-Source.md
       - blog/2021/12/Proxmox/Proxmox-Subscript.md
+    - 2022:
+      - blog/2022/01/Hello Rocky.md
+      - blog/2022/01/Bitwarden.md
       
