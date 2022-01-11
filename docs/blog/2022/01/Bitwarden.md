@@ -31,34 +31,50 @@ openssl req -x509 -newkey rsa:4096 -keyout $NAME.key \
 Container:
 ``` bash
 e.g. 
-$PATH = /docker_data/bitwarden/ssl
-$NAME = bitwarden
+$SSL_PATH = bitwarden/ssl
+$CONTAINER NAME = bitwarden
 
-docker run -d --restart always --name $NAME -e \
-ROCKET_TLS='{certs="/$PATH/$NAME.crt",key="/$PATH/$NAME.key"}' \
--v /$PATH/ssl/:/ssl/ -v \
-/$PATH/:/data/ -p 443:80 bitwardenrs/server:latest
+docker run -d --restart always --name $CONTAINER NAME -e \
+ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
+-v /$HOME/bitwarden/ssl/:/ssl/ \
+-v /$HOME/bitwarden/bw-data:/data/ \
+-p 443:80 bitwardenrs/server:latest
 ```
-DB Backup:
+[DB Backup](https://github.com/dani-garcia/vaultwarden/issues/975):
 ``` bash
 #!/usr/bin/env bash
 
 set -e
-set -u
 
-declare -r db_src="$PATH/db.sqlite3"
-declare -r db_bak="$PATH/backup"
-declare -r db_dst="$SMB/NFS/AW3/DROPBOX..."
- 
-rm -rf "${db_bak}/*"
-sqlite3 "${db_src}" ".backup '${db_bak}/bitw.sqlite3'"
+bitwarden_folder_updated=/home/USER/bitwarden/bitwarden-folder-updated
+touch $bitwarden_folder_updated
 
-cd "${db_bak}"
-tar -czf "bitw.tar.gz" "bitw.sqlite3"
-mv "${db_bak}/bitw.tar.gz" "${db_dst}/bitw.tar.gz-$(date +"%Y-%m-%d")"
+if [[ "$(cat $bitwarden_folder_updated)" == "1" ]]; then
+  rm -f /home/USER/bw-bk.tar.gz
+
+  docker exec bitwarden bash -c 'mkdir -p /data/db-backup && sqlite3 /data/db.sqlite3 ".backup /data/db-backup/backup.sqlite3"'
+
+  cd /home/USER/bitwarden/bw-data
+  tar -czvf /home/USER/bw-bk.tar.gz \
+    config.json \
+    icon_cache \
+    db-backup/backup.sqlite3
+
+  cd /home/USER/bitwarden/
+  tar -czvf /home/USER/bw-scripts.tar.gz \
+    backup.sh \
+    bitwarden-watch-for-changes.service \
+    watch-for-changes.sh
+
+mv /home/USER/bw-bk.tar.gz /SMB,NFS.AW3.../BitwardenBak/bw-bk-$(date +"%Y-%m-%d").tar.gz
+
+  echo "0" > /home/USER/bitwarden/bitwarden-folder-updated
+else
+  echo 'nothing to backup'
+fi
 
 crontab -e
-0 3 * * * $PATH/*.sh	# Rsync on 3:00 AM
+0 3 * * * $PATH/*.sh > /dev/null 2>&1	# Rsync on 3:00 AM
 
 crontab -l				# List the schedule
 ```
@@ -71,4 +87,9 @@ crontab -l				# List the schedule
 	# ./configure
 	# make
 	# make install
+	```
+!!! Tip
+	sqlite3 in docker env:
+	```
+	# docker exec -it CONTAINER bash -c 'cp /datasource/sqlite3 /usr/local/bin'
 	```
