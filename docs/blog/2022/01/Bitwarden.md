@@ -41,55 +41,118 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 -p 443:80 bitwardenrs/server:latest
 ```
 [DB Backup](https://github.com/dani-garcia/vaultwarden/issues/975):
-``` bash
-#!/usr/bin/env bash
 
-set -e
+=== ":octicons-mark-github-16: Systemd"
+	``` toml
+	[Unit]
+	Description=bitwarden-watch-for-changes
+	
+	[Service]
+	Type=simple
+	ExecStart=/home/USER/bitwardenrs/watch-for-changes.sh
+	Restart=always
+	WorkingDirectory=/home/USER
+	
+	[Install]
+	WantedBy=multi-user.target
+	```
+	!!! Warning
+	# sudo sed -i 's/^SELINUX=.*/SELINUX=[disabled|permissive]/g' /etc/selinux/config
+	# sudo reboot
+	# sudo sestatus
+	# sudo cp /PATH/bitwarden-watch-for-changes.service /etc/systemd/system/multi-user.target.wants
+	# sudo systemctl enable bitwarden-watch-for-changes.service
+	# sudo systemctl start bitwarden-watch-for-changes.service
+	# sudo systemctl status bitwarden-watch-for-changes.service
+	# sudo journalctl			//troubleshoot
+	# sudo chmod +x watch-for-changes.sh
 
-bitwarden_folder_updated=/home/USER/bitwarden/bitwarden-folder-updated
-touch $bitwarden_folder_updated
-
-if [[ "$(cat $bitwarden_folder_updated)" == "1" ]]; then
-  rm -f /home/USER/bw-bk.tar.gz
-
-  docker exec bitwarden bash -c 'mkdir -p /data/db-backup && sqlite3 /data/db.sqlite3 ".backup /data/db-backup/backup.sqlite3"'
-
-  cd /home/USER/bitwarden/bw-data
-  tar -czvf /home/USER/bw-bk.tar.gz \
-    config.json \
-    icon_cache \
-    db-backup/backup.sqlite3
-
-  cd /home/USER/bitwarden/
-  tar -czvf /home/USER/bw-scripts.tar.gz \
-    backup.sh \
-    bitwarden-watch-for-changes.service \
-    watch-for-changes.sh
-
-mv /home/USER/bw-bk.tar.gz /SMB,NFS.AW3.../BitwardenBak/bw-bk-$(date +"%Y-%m-%d").tar.gz
-
-  echo "0" > /home/USER/bitwarden/bitwarden-folder-updated
-else
-  echo 'nothing to backup'
-fi
-
-crontab -e
-0 3 * * * $PATH/*.sh > /dev/null 2>&1	# Rsync on 3:00 AM
-
-crontab -l				# List the schedule
-```
-!!! Tip
-	[sqlite3](https://sqlite.org/index.html): curl the source and complie.
+=== ":octicons-telescope-16: Bash"
 	``` bash
-	# dnf install make, gcc
-	# tar xvfz sqlite-autoconf-<version>.tar.gz
-	# cd sqlite-autoconf-<version>
-	# ./configure
-	# make
-	# make install
+	#!/usr/bin/env bash
+	export PATH=/usr/local/inotify-tools/bin/
+	path_to_watch=/home/USER/bitwardenrs/bw-data
+	
+	inotifywait -m "$path_to_watch" -e create -e moved_to -e modify |
+		while read path action file; do
+  		if [[ $file =~ (wal|config.json) ]]; then
+    		echo '1' > /home/USER/bitwardenrs/bitwarden-folder-updated;
+  		fi
+		done
 	```
-!!! Tip
-	sqlite3 in docker env:
+	!!! Note
+		[inotify-tools](https://docs.rockylinux.org/books/learning_rsync/06_rsync_inotify/): inotify's features to be used from within shell scripts
+		``` bash
+		# dnf -y install autoconf automake libtool
+		# wget -c https://github.com/inotify-tools/inotify-tools/archive/refs/tags/3.21.9.6.tar.gz
+		# tar -zvxf 3.21.9.6.tar.gz -C /usr/local/src/
+		# cd /usr/local/src/inotify-tools-3.21.9.6/
+		# ./autogen.sh && \
+			./configure --prefix=/usr/local/inotify-tools && \
+			make && \
+			make install
+		# ls /usr/local/inotify-tools/bin/
+		```
+		[Github Reference](https://github.com/inotify-tools/inotify-tools)
+
+=== ":octicons-database-16: DB"
+	``` bash
+	#!/usr/bin/env bash
+	
+	set -e
+	
+	bitwarden_folder_updated=/home/USER/bitwarden/bitwarden-folder-updated
+	touch $bitwarden_folder_updated
+	
+	if [[ "$(cat $bitwarden_folder_updated)" == "1" ]]; then
+  	rm -f /home/USER/bw-bk.tar.gz
+	
+  	docker exec bitwarden bash -c 'mkdir -p /data/db-backup && sqlite3 /data/db.sqlite3 ".backup /data/db-backup/backup.sqlite3"'
+	
+  	cd /home/USER/bitwarden/bw-data
+  	tar -czvf /home/USER/bw-bk.tar.gz \
+    	config.json \
+    	icon_cache \
+    	db-backup/backup.sqlite3
+	
+  	cd /home/USER/bitwarden/
+  	tar -czvf /home/USER/bw-scripts.tar.gz \
+    	backup.sh \
+    	bitwarden-watch-for-changes.service \
+    	watch-for-changes.sh
+	
+	mv /home/USER/bw-bk.tar.gz /SMB,NFS.AW3.../BitwardenBak/bw-bk-$(date +"%Y-%m-%d").tar.gz
+	mv /home/USER/bw-scripts.tar.gz /SMB,NFS.AW3.../BitwardenBak/bw-scripts-$(date +"%Y-%m-%d").tar.gz
+	
+  	echo "0" > /home/USER/bitwarden/bitwarden-folder-updated
+	else
+  	echo 'nothing to backup'
+	fi
 	```
-	# docker exec -it CONTAINER bash -c 'cp /datasource/sqlite3 /usr/local/bin'
+	??? example "Sqlite3"
+
+		=== ":octicons-mark-github-16: [sqlite3](https://sqlite.org/index.html): curl the source and complie."
+
+			``` bash
+				# dnf install make, gcc
+				# tar xvfz sqlite-autoconf-<version>.tar.gz
+				# cd sqlite-autoconf-<version>
+				# ./configure
+				# make
+				# make install
+			```
+
+		=== ":octicons-mark-github-16: sqlite3 in docker env:"
+
+			``` bash
+				# docker exec -it CONTAINER bash -c 'cp /datasource/sqlite3 /usr/local/bin'
+			```
+
+=== ":octicons-megaphone-16: Crontab"
+	``` bash
+	crontab -e
+	0 3 * * * $PATH/*.sh > /dev/null 2>&1	# Rsync on 3:00 AM
+	0 * * * * $PATH/*.sh > /dev/null 2>&1	# Rsync every hour
+	
+	crontab -l				# List the schedule
 	```
