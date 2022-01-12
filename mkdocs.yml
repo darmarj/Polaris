@@ -38,6 +38,9 @@ copyright: Copyright &copy; 2021 ~ Present Darmarj.M
 theme:
   name: null
   custom_dir: !ENV [THEME_DIR, "material"]
+  # icon:
+  #   admonition:
+  #     example: octicons-beaker-16
 
   # Static files
   static_templates:
