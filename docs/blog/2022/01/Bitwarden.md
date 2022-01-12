@@ -42,7 +42,7 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 ```
 [DB Backup](https://github.com/dani-garcia/vaultwarden/issues/975):
 
-=== ":octicons-mark-github-16: Systemd"
+=== ":octicons-plug-16: Systemd"
 	``` toml
 	[Unit]
 	Description=bitwarden-watch-for-changes
@@ -57,15 +57,14 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 	WantedBy=multi-user.target
 	```
 	!!! Warning
-	# sudo sed -i 's/^SELINUX=.*/SELINUX=[disabled|permissive]/g' /etc/selinux/config
-	# sudo reboot
-	# sudo sestatus
-	# sudo cp /PATH/bitwarden-watch-for-changes.service /etc/systemd/system/multi-user.target.wants
-	# sudo systemctl enable bitwarden-watch-for-changes.service
-	# sudo systemctl start bitwarden-watch-for-changes.service
-	# sudo systemctl status bitwarden-watch-for-changes.service
-	# sudo journalctl			//troubleshoot
-	# sudo chmod +x watch-for-changes.sh
+		``` bash
+		# sudo sed -i 's/^SELINUX=.*/SELINUX=[disabled|permissive]/g' /etc/selinux/config && sudo sestatus
+		# sudo reboot
+		# sudo cp /PATH/bitwarden-watch-for-changes.service /etc/systemd/system/multi-user.target.wants
+		# sudo systemctl enable/start/status bitwarden-watch-for-changes.service
+		# sudo journalctl			//troubleshoot
+		# sudo chmod +x watch-for-changes.shd
+		```
 
 === ":octicons-telescope-16: Bash"
 	``` bash
@@ -80,8 +79,7 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
   		fi
 		done
 	```
-	!!! Note
-		[inotify-tools](https://docs.rockylinux.org/books/learning_rsync/06_rsync_inotify/): inotify's features to be used from within shell scripts
+	!!! Note "[inotify-tools](https://docs.rockylinux.org/books/learning_rsync/06_rsync_inotify/): inotify's features to be used from within shell scripts"
 		``` bash
 		# dnf -y install autoconf automake libtool
 		# wget -c https://github.com/inotify-tools/inotify-tools/archive/refs/tags/3.21.9.6.tar.gz
@@ -93,7 +91,7 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 			make install
 		# ls /usr/local/inotify-tools/bin/
 		```
-		[Github Reference](https://github.com/inotify-tools/inotify-tools)
+	!!! Tip "[Github Reference](https://github.com/inotify-tools/inotify-tools)"
 
 === ":octicons-database-16: DB"
 	``` bash
@@ -131,7 +129,7 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 	```
 	??? example "Sqlite3"
 
-		=== ":octicons-mark-github-16: [sqlite3](https://sqlite.org/index.html): curl the source and complie."
+		=== ":octicons-code-square-16: [sqlite3](https://sqlite.org/index.html): curl the source and complie."
 
 			``` bash
 				# dnf install make, gcc
@@ -142,17 +140,19 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 				# make install
 			```
 
-		=== ":octicons-mark-github-16: sqlite3 in docker env:"
+		=== ":octicons-code-square-16: sqlite3 in docker env:"
 
 			``` bash
 				# docker exec -it CONTAINER bash -c 'cp /datasource/sqlite3 /usr/local/bin'
 			```
 
 === ":octicons-megaphone-16: Crontab"
-	``` bash
-	crontab -e
-	0 3 * * * $PATH/*.sh > /dev/null 2>&1	# Rsync on 3:00 AM
-	0 * * * * $PATH/*.sh > /dev/null 2>&1	# Rsync every hour
-	
-	crontab -l				# List the schedule
-	```
+	!!! example
+		``` bash
+		crontab -e
+		0 3 * * * $PATH/*.sh > /dev/null 2>&1	# Rsync on 3:00 AM
+		0 * * * * $PATH/*.sh > /dev/null 2>&1	# Rsync every hour
+		
+		crontab -l				# List the schedule
+		```
+
