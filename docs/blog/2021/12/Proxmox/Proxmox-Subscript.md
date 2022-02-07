@@ -12,14 +12,18 @@ search:
 
 !!! note
 
-    Go to **/usr/share/pve-manager/js/pvemanagerlib.js** and taka an editor:
+    Move into **/usr/share/javascript/proxmox-widget-toolkit/pvemanagerlib.js** and chage as following:
 
-    __Code__
+__Code__
 
-    ```javascript
+```javascript
 
-        if (res === null || res === undefined || !res ||
-        res.data.status.toLowerCase() !== 'active') {
+    if (res === null || res === undefined ||!res || res.data.status.toLowerCase() !== 'active') {
 
-        if (false) {
-    ```
+    if (false) {
+```
+```bash
+
+    systemctl restart pveproxy.service
+    reboot
+```
