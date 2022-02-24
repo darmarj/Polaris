@@ -8,7 +8,7 @@ template: overrides/main.html
 
 ## Architecture
 
-[![Kubernetes-Architecture](Containerd-Runtime/Kubernetes-Architecture.png)](Containerd-Runtime/Kubernetes-Architecture.png "Kubernetes-Architecture")
+[![Kubernetes-Architecture](../assets/images/Kubernetes-Architecture.png)](../assets/images/Kubernetes-Architecture.png "Kubernetes-Architecture")
 
 ### The Control plane
 

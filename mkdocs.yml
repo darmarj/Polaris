@@ -163,12 +163,13 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Container Runtime:
-    - Architecture: architecture.md
-    - Containerd: containerd.md
-    - Docker: docker.md
-    - Kubernetes: kubernetes.md
+    - Containerd: Containerd/containerd.md
+    - Docker: Docker/docker.md
   - Rancher:
-    - K3s: K3s/K3s.md
+    - K3s: Rancher/K3s.md
+  - Kubernetes:
+    - Architecture: Kubernetes/architecture.md
+    - Kubernetes: Kubernetes/kubernetes.md
   
   - Blog:
     - blog/index.md

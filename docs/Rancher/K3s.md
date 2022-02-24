@@ -23,10 +23,10 @@ Great for:
 
 ## Architecture
 
-[![K3s-architecture-single-server](K3s-architecture-single-server.png)](K3s-architecture-single-server.png "K3s-architecture-single-server")
+[![K3s-architecture-single-server](../assets/images/K3s-architecture-single-server.png)](../assets/images/K3s-architecture-single-server.png "K3s-architecture-single-server")
 
  __How it works__
- [![K3s-how-it-works](K3s-how-it-works.png)](K3s-how-it-works.png "K3s-how-it-works")
+ [![K3s-how-it-works](../assets/images/K3s-how-it-works.png)](../assets/images/K3s-how-it-works.png "K3s-how-it-works")
 
 ### [__<ins>alpine Linux</ins>__](https://alpinelinux.org/downloads/):
 

@@ -7,7 +7,7 @@ template: overrides/main.html
 Containerd – An abstraction of kernel features that provides a relatively high level container interface. Other software projects can use this to run containers and manage container images.
 
 __Ecosystem__
-![Ecosystem](Containerd-Runtime/Ecosystem.png "Ecosystem")
+![Ecosystem](../assets/images/Ecosystem.png "Ecosystem")
 
 ## Container Runtime Interface (CRI)
 
