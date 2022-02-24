@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-title: K8s Architecture
+title: Container Runtime
 ---
 
 ## Abstract
@@ -17,5 +17,4 @@ e.g:
 
 <!-- Picture Clickable Markdown
 [![Alternative Text](/path/of/image.jpg)](/path/to/image.jpg) -->
-
-[![Architecture](Containerd-Runtime/Architecture.png)](Containerd-Runtime/Architecture.png "Architecture")
+[![Architecture](../assets/images/Architecture.png)](../assets/images/Architecture.png "Architecture")
