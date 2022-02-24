@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Tech-Docs
+site_name: POLARIS
 # site_url: https://squidfunk.github.io/mkdocs-material/
 # site_author: Martin Donath
 site_description: >-
@@ -145,7 +145,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shorthand: true
       user: darmarj
-      repo: MkdocsMaterial-K8s
+      repo: Polaris
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -165,6 +165,8 @@ nav:
   - Container Runtime:
     - Containerd: Containerd/containerd.md
     - Docker: Docker/docker.md
+    - Namespace: Containerd/namespace.md
+    - Cgroups: Containerd/cgroups.md
   - Rancher:
     - K3s: Rancher/K3s.md
   - Kubernetes:

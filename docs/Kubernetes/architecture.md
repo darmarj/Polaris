@@ -1,6 +1,6 @@
 ---
 template: overrides/main.html
-title: Container Runtime
+title: k8s architecture
 ---
 
 ## Abstract

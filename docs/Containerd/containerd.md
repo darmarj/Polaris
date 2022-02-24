@@ -1,5 +1,6 @@
 ---
 template: overrides/main.html
+title: containerd
 ---
 
 # Abstract
@@ -14,10 +15,9 @@ __Ecosystem__
 __CRI is the API that Kubernetes uses to control the different runtimes that create and manage containers.__
 
 __CRI__ makes it easier for Kubernetes to use different container runtimes. Instead of the Kubernetes project having to manually add support for each runtime, the __CRI API__ describes how Kubernetes interacts with each runtime. So it’s up to the runtime how to actually manage containers, as long as it __*obeys*__ the CRI API.
-![CRI](Containerd-Runtime/CRI.png "CRI")
+![CRI](../assets/images/CRI.png "CRI")
 
-So if you prefer to use [containerd](#containerd) to run your containers, you can. Or, if you prefer to use __CRI-O__, then you can. This is because both of these runtimes implement the
-[CRI](#container-runtime-interface-cri) spec.
+So if you prefer to use [containerd](#containerd) to run your containers, you can. Or, if you prefer to use __CRI-O__, then you can. This is because both of these runtimes implement the [CRI](#container-runtime-interface-cri) spec.
 
 If you’re an end user, the implementation mostly shouldn’t matter. These CRI implementations are intended to be pluggable and seamlessly changeable.
 
