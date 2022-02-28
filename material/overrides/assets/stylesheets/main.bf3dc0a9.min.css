@@ -23,7 +23,8 @@
   }
 }
 :root > * {
-  --md-keyword-bg-color: rgba(231, 175, 250, 0.952);
+  --md-keyword-bg-color-rouge: rgba(231, 175, 250, 0.5);
+  --md-keyword-bg-color-jade: rgba(11, 213, 112, 0.4);
 }
 .md-typeset .twitter {
   color: #00acee;
@@ -336,12 +337,12 @@
   font-weight: 700;
 }
 .md-typeset .rouge {
-    background-color: var(--md-keyword-bg-color);
+    background-color: var(--md-keyword-bg-color-rouge);
     padding: 2px 4px; 
     border-radius: 5px;
 }
-.md-typeset keywd.green {
-    background-color: rgba(11, 213, 112, 0.15);
+.md-typeset .jade {
+    background-color: var(--md-keyword-bg-color-jade);
     padding: 2px 4px; 
     border-radius: 5px;   
 }
