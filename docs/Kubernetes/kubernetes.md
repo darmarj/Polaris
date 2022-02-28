@@ -15,10 +15,10 @@ title: k8s
 
 On the left, you’ve got the __control plane__, which lives across multiple nodes.
 
-“Control plane” is a pretty broad term to describe the components that manage the cluster. It includes things like the Kubernetes API Server (which you interact with when you use <backgrd class="rouge">kubectl</backgrd>), and Etcd (which is the data store that holds the desired state of the cluster).
+“Control plane” is a pretty broad term to describe the components that manage the cluster. It includes things like the Kubernetes API Server (which you interact with when you use <span class="rouge">kubectl</span>), and Etcd (which is the data store that holds the desired state of the cluster).
 
 ### The nodes
 
-The nodes are the worker machines which run your <keywd class="green">__Pods__</keywd> and their containers. On each node, the <keywd class="green">__Kubelet__</keywd> is a clever daemon that manages the containers running on that node, and reports back their status to the control plane.
+The nodes are the worker machines which run your <span class="jade">Pods</span> and their containers. On each node, the <span class="jade">Kubelet</span> is a clever daemon that manages the containers running on that node, and reports back their status to the control plane.
 
 You want to learn more about Kubernetes, check out the [__<ins>components page</ins>__](https://kubernetes.io/docs/concepts/overview/components/) on the official Kubernetes on the website.
