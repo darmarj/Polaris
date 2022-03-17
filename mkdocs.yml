@@ -135,6 +135,7 @@ markdown_extensions:
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -184,4 +185,6 @@ nav:
       - blog/2022/01/Hello Rocky.md
       - blog/2022/01/Bitwarden.md
       - blog/2022/02/HomePage.md
-      
+      - blog/2022/03/Terraform+KVM.md
+      - blog/2022/03/Terraform+Proxmox.md
+      - blog/2022/03/Transparent Gnome.md
