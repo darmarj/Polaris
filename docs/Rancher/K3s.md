@@ -1,12 +1,9 @@
 ---
 template: overrides/main.html
+title: k3s
 ---
 
-<div style="font-style: normal; text-align: center;" markdown="1">
-
 # K3s
-
-</div>
 
 ## Abstract
 

@@ -1,9 +1,6 @@
 ---
 template: overrides/main.html
-description: >
-  Terraform + Proxmox
-search:
-  exclude: true
+title: Proxmox
 ---
 
 # How to deploy VMs in Proxmox with Terraform
@@ -41,30 +38,30 @@ I went with the API key method since it is not desirable to have your root passw
 
 So we need to create a new user. We’ll name it ‘blog_example’. To add a new user go to Datacenter in the left tab, then Permissions -> Users -> Click add, name the user and click add.
 
-![Add_user](../../../assets/images/Add_user.png "Add_user")
+![Add_user](../assets/images/Add_user.png "Add_user")
 `Adding ‘blog_example’ user to my proxmox datacenter (cluster)`
 
 Next, we need to add API tokens. Click API tokens below users in the permissions category and click add. Select the user you just created and give the token an ID, and uncheck privilege separation (which means we want the token to have the same permissions as the user):
 
-![Add_user](../../../assets/images/Add_token.png "Add_token")
+![Add_user](../assets/images/Add_token.png "Add_token")
 `Adding a new API token for user ‘blog_example’`
 
 **When you click Add it will show you the key. Save this key. It will never be displayed again!**
 
-![Add_user](../../../assets/images/Token_secret.png "Token_secret")
+![Add_user](../assets/images/Token_secret.png "Token_secret")
 `Super secret API key secret`
 
 Next we need to add a role to the new user. Permissions -> Add -> Path = ‘/’, User is the one you just made, role = ‘PVEVMAdmin’. This gives the user (and associated API token!) rights to all nodes (the / for path) to do VMAdmin activities:
 
-![Add_user](../../../assets/images/User_Permission.png "User_Permission")
+![Add_user](../assets/images/User_Permission.png "User_Permission")
 
 You also need to add permissions to the storage used by the VMs you want to deploy (both from and to), for me this is /storage/local-zfs (might be /storage/local-lvm for you). Add that too in the path section. Use Admin for the role here because the user also needs the ability to allocate space in the datastore (you could use PVEVMAdmin + a datastore role but I haven’t dove into which one yet):
 
-![Add_user](../../../assets/images/Storage_Permission.png "Storage_Permission")
+![Add_user](../assets/images/Storage_Permission.png "Storage_Permission")
 
 At this point we are done with the permissions:
 
-![Add_user](../../../assets/images/Permission_Overview.png "Permission_Overview")
+![Add_user](../assets/images/Permission_Overview.png "Permission_Overview")
 
 ### Terraform basic information and provider installation
 
@@ -82,7 +79,7 @@ Ok so in main.tf let’s add the bare minimum. We need to tell Terraform to use 
 
 main.tf:
 
-``` terraform
+``` json
 terraform {
   required_providers {
     proxmox = {
@@ -129,7 +126,7 @@ commands will detect it and remind you to do so if necessary.
 
 Alright with the provider installed, it is time to use it to deploy a VM. We will use the template as below. Alter your main.tf file to be the following. I break it down inside the file with comments
 
-``` terraform
+``` json
 terraform {
   required_providers {
     proxmox = {
@@ -336,7 +333,7 @@ With the summary stating what we want, we can now apply the plan (terraform appl
 
 If all goes well, you will be informed that 1 resource was added!
 
-![terraform apply](../../../assets/images/terraform apply.png "terraform apply")
+![terraform apply](../assets/images/terraform apply.png "terraform apply")
 
 Command and full output:
 
@@ -447,7 +444,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 Now go check Proxmox and see if your VM was created:
 
-![PromoxVM](../../../assets/images/PromoxVM.png "PromoxVM")
+![PromoxVM](../assets/images/PromoxVM.png "PromoxVM")
 
 Success! You should now be able to SSH into the new VM with the key you already provided **(note: the username will be ‘ubuntu’, not whatever you had set in your key)**.
 
