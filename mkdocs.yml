@@ -135,6 +135,7 @@ markdown_extensions:
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
+  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -168,6 +169,10 @@ nav:
     - Namespace: Container/namespace.md
     - Cgroups: Container/cgroups.md
     - Nerdctl: Container/nerdctl.md
+  - Terraform:
+    - Kubernetes: Terraform/Kubernetes.md
+    - KVM: Terraform/KVM.md
+    - Proxmox: Terraform/Proxmox.md
   - Rancher:
     - K3s: Rancher/K3s.md
   - Kubernetes:
@@ -184,5 +189,7 @@ nav:
       - blog/2022/01/Hello Rocky.md
       - blog/2022/01/Bitwarden.md
       - blog/2022/02/HomePage.md
+      - blog/2022/03/Terraform+KVM.md
+      - blog/2022/03/Transparent Gnome.md
+      - blog/2022/03/KVM Bridge.md
       - blog/2022/03/ibus-flypyInput.md
-      
