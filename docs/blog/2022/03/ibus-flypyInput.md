@@ -52,7 +52,7 @@ patch:
 Ctrol+`
 ```
 
-## AutoStart
+## AutoStart---
 
 To launch IBus on user login, create an [autostart](https://wiki.archlinux.org/title/Autostart) entry with the following method: 
 !!! INFO "profile"
