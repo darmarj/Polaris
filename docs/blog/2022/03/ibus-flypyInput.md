@@ -15,7 +15,8 @@ search:
 ## Installation
 
 ``` bash
-yay ibus-rime
+paru/yay ibus-rime
+paru/yay rime-double-pinyin
 ```
 
 !!! NOTE "environment (optional)"
@@ -47,8 +48,9 @@ patch:
 
 ## Wizard Configuration
 
-++ctrl+grave++
-
+```shell
+Ctrol+`
+```
 
 ## AutoStart
 
