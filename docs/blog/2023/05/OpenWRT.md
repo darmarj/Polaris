@@ -1,7 +1,7 @@
 ---
 template: overrides/main.html
 description: >
-  Transparent Gnome
+  OpenWRT
 search:
   exclude: true
 ---

@@ -1,7 +1,7 @@
 ---
 template: overrides/main.html
 description: >
-  Transparent Gnome
+  Groff & MOM
 search:
   exclude: true
 ---
