@@ -16,9 +16,17 @@ search:
 * Do export
 
 ```bash
+sudo mv /opt/sublime_text/sublime_text /opt/sublime_text/sublime_text.old
+```
 
-sudo mv /opt/sublime_text/sublime_text /opt/sublime_text/sublime_text.old 
+```bash
 sudo mv $HOME/Downloads/sublime_text /opt/sublime_text/sublime_text
+```
+
+```bash
 sudo chmod 755 /opt/sublime_text/sublime_text
+```
+
+```bash
 sudo chown root:root /opt/sublime_text/sublime_text
 ```
