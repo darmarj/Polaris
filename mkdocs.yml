@@ -185,7 +185,13 @@ nav:
     - Architecture: Kubernetes/architecture.md
     - Kubernetes: Kubernetes/kubernetes.md
   - Gentoo:
-    - Installation: Gentoo Linux/Gentoo Installation Summary.md
+    - Installation: 
+      - Gentoo Linux/Introduction.md
+      - Gentoo Linux/Network.md
+      - Gentoo Linux/Prepare the disks.md
+      - Gentoo Linux/Stage3.md
+      - Gentoo Linux/Base system.md
+    
   
   - Blog:
     - blog/index.md
