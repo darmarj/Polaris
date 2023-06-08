@@ -2,9 +2,10 @@
 template: overrides/main.html
 title: Stage3
 ---
+# Installing stage3
 
-## Installing stage3
-#### Verify the current date and time by running the date command: 
+## Installing a stage tarball
+### Verify the current date and time by running the date command: 
 ```shell
 root #date
 
@@ -16,7 +17,7 @@ Official Gentoo live environments include the chronyd command (available through
 root #chronyd -q
 ```
 
-#### Choosing a stage tarball
+### Choosing a stage tarball
 **Multilib (32 and 64-bit)**
 !!! pied-piper "Multilib"
     Choosing a base tarball for the system can save a considerable amount of time later on in the installation process, specifically when it is time to choose a system profile. The selection of a stage tarball will directly impact future system configuration and can save a headache or two later on down the line. The multilib tarball uses 64-bit libraries when possible, and only falls back to the 32-bit versions when necessary for compatibility. This is an excellent option for the majority of installations because it provides a great amount of flexibility for customization in the future. Those who desire their systems to be capable of easily switching profiles should download the multilib tarball option for their respective processor architecture.
@@ -37,7 +38,7 @@ OpenRC does not function as a replacement for the /sbin/init file by default and
 #### systemd
 systemd is a modern SysV-style init and rc replacement for Linux systems. It is used as the primary init system by a majority of Linux distributions. systemd is fully supported in Gentoo and works for its intended purpose. If something seems lacking in the Handbook for a systemd install path, review the [systemd article](https://wiki.gentoo.org/wiki/Systemd) before asking for support. 
 
-#### Donwloading the stage tarball
+### Donwloading the stage tarball
 - Graphical browsers
 ```shell
 root #cd /mnt/gentoo
@@ -57,18 +58,18 @@ root #lynx https://www.gentoo.org/downloads/mirrors/
  root #openssl dgst -r -whirlpool stage3-amd64-<release>-<init>.tar.xz
  ```
 
-#### Unpacking the stage tarball
+### Unpacking the stage tarball
 ```shell
 root #tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 ```
 
-#### <span class="jade">Configuring compile options</span>
+## <span class="jade">Configuring compile options</span>
 To optimize the system, it is possible to set variables which impact the behavior of Portage, Gentoo's officially supported package manager. All those variables can be set as environment variables (using export) but setting via export is not permanent. 
 ```shell
 root #nano -w /mnt/gentoo/etc/portage/make.conf
 ```
 
-#### CFLAGS and CXXFLAGS
+### CFLAGS and CXXFLAGS
 The CFLAGS and CXXFLAGS variables define the optimization flags for GCC C and C++ compilers respectively. Although those are defined generally here, for maximum performance one would need to optimize these flags for each program separately. The reason for this is because every program is different. However, this is not manageable, hence the definition of these flags in the make.conf file.
 
 In make.conf one should define the optimization flags that will make the system the most responsive generally. Don't place experimental settings in this variable; too much optimization can make programs misbehave (crash, or even worse, malfunction).
@@ -95,7 +96,7 @@ CXXFLAGS="${COMMON_FLAGS}"
 !!! tip ""
     Although the [GCC optimization](https://wiki.gentoo.org/wiki/GCC_optimization) article has more information on how the various compilation options can affect a system, the Safe CFLAGS article may be a more practical place for beginners to start optimizing their systems.
 
-#### MAKEOPTS
+### MAKEOPTS
 The MAKEOPTS variable defines how many parallel compilations should occur when installing a package. As of Portage version 3.0.31[^1], if left undefined, Portage's default behavior is to set the MAKEOPTS value to the same number of threads returned by nproc.
 
 A good choice is the smaller of: the number of threads the CPU has, or the total amount of system RAM divided by 2 GiB.
@@ -113,5 +114,3 @@ A good choice is the smaller of: the number of threads the CPU has, or the total
     MAKEOPTS="-j4"
     ```
 [^1]:https://gitweb.gentoo.org/proj/portage.git/commit/?id=5d2af567772bb12b073f1671daea6263055cbdc2
-
-

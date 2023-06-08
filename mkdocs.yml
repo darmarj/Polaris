@@ -187,10 +187,12 @@ nav:
   - Gentoo:
     - Installation: 
       - Gentoo Linux/Introduction.md
+      - Gentoo Linux/Media.md
       - Gentoo Linux/Network.md
       - Gentoo Linux/Prepare the disks.md
       - Gentoo Linux/Stage3.md
       - Gentoo Linux/Base system.md
+      - Gentoo Linux/Kernel.md
     
   
   - Blog:

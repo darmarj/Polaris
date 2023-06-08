@@ -25,6 +25,9 @@
 :root > * {
   --md-keyword-bg-color-rouge: rgba(231, 175, 250, 0.5);
   --md-keyword-bg-color-jade: rgba(11, 213, 112, 0.4);
+  --md-keyword-bg-color-turquoise: rgba(26, 188, 156, 1);
+  --md-keyword-bg-color-amethyst: rgba(155, 89, 182, 1);
+  --md-keyword-bg-color-carrot: rgba(230, 126, 34, 1);
 }
 .md-typeset .twitter {
   color: #00acee;
@@ -346,6 +349,23 @@
     padding: 2px 4px; 
     border-radius: 5px;   
 }
+.md-typeset .turquoise {
+    background-color: var(--md-keyword-bg-color-turquoise);
+    padding: 2px 4px; 
+    border-radius: 5px;   
+}
+.md-typeset .amethyst {
+    background-color: var(--md-keyword-bg-color-amethyst);
+    padding: 2px 4px; 
+    border-radius: 5px;   
+}
+
+.md-typeset .carrot {
+    background-color: var(--md-keyword-bg-color-carrot);
+    padding: 2px 4px; 
+    border-radius: 5px;   
+}
+
 h1 {
     text-align: center;
 }

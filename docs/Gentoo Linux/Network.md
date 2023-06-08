@@ -3,8 +3,8 @@ template: overrides/main.html
 title: Network
 ---
 
-## Network
-#### Determine interface names
+# Network
+## Determine interface names
 ```shell
 root #ifconfig
 
@@ -18,7 +18,7 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
           RX bytes:485691215 (463.1 Mb)  TX bytes:123951388 (118.2 Mb)
           Interrupt:11 Base address:0xe800 
 ```
-#### Configure the proxies
+## Configure the proxies
 ```shell
 #http_proxy
 root #export http_proxy="http://proxy.gentoo.org:8080"
@@ -28,15 +28,15 @@ root #export ftp_proxy="ftp://proxy.gentoo.org:8080"
 root #export RSYNC_PROXY="proxy.gentoo.org:8080"
 ```
 
-#### Netowork automatic config Tool
+## Netowork automatic config Tool
 ```shell
 root #net-setup eth0
 ```
-#### DHCP
+## DHCP
 ```shell
 root #dhcpcd eth0
 ```
-#### Preparing the wireless access
+## Preparing the wireless access
 ```shell
 root #iw dev wlp9s0 info
 Interface wlp9s0

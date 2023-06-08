@@ -3,14 +3,14 @@ template: overrides/main.html
 title: Base system
 ---
 
-### Installing base system
-#### Selecting mirrors
+# Installing base system
+## Selecting mirrors
 In order to download source code quickly it is recommended to select a fast mirror. Portage will look in the make.conf file for the GENTOO_MIRRORS variable and use the mirrors listed therein.
 ```shell
 root #mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
 ```
 
-#### Gentoo ebuild repository
+## Gentoo ebuild repository
 A second important step in selecting mirrors is to configure the Gentoo ebuild repository via the /etc/portage/repos.conf/gentoo.conf file. This file contains the sync information needed to update the package repository (the collection of ebuilds and related files containing all the information Portage needs to download and install software packages).
 ```shell
 root #mkdir --parents /mnt/gentoo/etc/portage/repos.conf
@@ -38,12 +38,12 @@ sync-openpgp-key-refresh-retry-delay-max = 60
 sync-openpgp-key-refresh-retry-delay-mult = 4
 ```
 
-#### DNS info
+## DNS info
 ```shell
 root #cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
 ```
 
-#### Mounting the necessary filesystmes
+## Mounting the necessary filesystmes
 In a few moments, the Linux root will be changed towards the new location.
 
 The filesystems that need to be made available are:
@@ -70,7 +70,7 @@ root #mount --make-slave /mnt/gentoo/run
 !!! note ""
     The <span class="rouge">--make-rslave</span> operations are needed for systemd support later in the installation.
 
-#### Entering the new environment
+## Entering the new environment
 Now that all partitions are initialized and the base environment installed, it is time to enter the new installation environment by chrooting into it. This means that the session will change its root (most top-level location that can be accessed) from the current installation environment (installation CD or other installation medium) to the installation system (namely the initialized partitions). Hence the name, change root or chroot.
 
 This chrooting is done in three steps:
@@ -85,10 +85,10 @@ root #source /etc/profile
 root #export PS1="(chroot) ${PS1}"
 ```
 
-#### Mounting the boot partition
+## Mounting the boot partition
 ```shell
 root #mount /dev/sda1 /boot
 ```
 
-#### Congiuring Portage
+## Congiuring Portage
 Installing a Gentoo ebuild repository snapshot from the web
