@@ -410,8 +410,8 @@ root #nano -w /etc/modules-load.d/network.conf
 
 Note that the module's .ko file suffix is insignificant to the loading mechanism and left out of the configuration file:
 
-!!! pied-piper "Force loading 3c59x module"
-    <span class="carrot">FILE</span> /etc/modules-load.d/network.conf
+!!! abstract "Force loading 3c59x module"
+    <span class="message">FILE</span> /etc/modules-load.d/network.conf
     
     3c59x
     

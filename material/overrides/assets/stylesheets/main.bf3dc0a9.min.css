@@ -28,6 +28,7 @@
   --md-keyword-bg-color-turquoise: rgba(26, 188, 156, 1);
   --md-keyword-bg-color-amethyst: rgba(155, 89, 182, 1);
   --md-keyword-bg-color-carrot: rgba(230, 126, 34, 1);
+  --md-keyword-bg-color-skype: rgba(0, 175, 240, 1);
 }
 .md-typeset .twitter {
   color: #00acee;
@@ -359,13 +360,16 @@
     padding: 2px 4px; 
     border-radius: 5px;   
 }
-
 .md-typeset .carrot {
     background-color: var(--md-keyword-bg-color-carrot);
     padding: 2px 4px; 
     border-radius: 5px;   
 }
-
+.md-typeset .skype {
+    background-color: var(--md-keyword-bg-color-skype);
+    padding: 2px 4px; 
+    border-radius: 5px;   
+}
 h1 {
     text-align: center;
 }
