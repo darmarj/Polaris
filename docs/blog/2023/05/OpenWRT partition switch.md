@@ -6,7 +6,7 @@ search:
   exclude: true
 ---
 
-# OpenWRT parition switch for ROM flash
+# OpenWRT parition switch
 
 ```shell
 root@lede:~# fw_printenv boot_part
