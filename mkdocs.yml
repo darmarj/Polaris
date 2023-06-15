@@ -194,6 +194,9 @@ nav:
       - Gentoo Linux/Base system.md
       - Gentoo Linux/Kernel.md
       - Gentoo Linux/System.md
+      - Gentoo Linux/Tools.md
+      - Gentoo Linux/Bootloader.md
+      - Gentoo Linux/Finalizing.md
     
   
   - Blog:
