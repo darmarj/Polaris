@@ -6,7 +6,8 @@ search:
   exclude: true
 ---
 
-# OpenWRT parition switch
+# OpenWRT
+## Parition switch
 
 ```shell
 root@lede:~# fw_printenv boot_part
