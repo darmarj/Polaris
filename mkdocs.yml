@@ -185,7 +185,7 @@ nav:
     - Architecture: Kubernetes/architecture.md
     - Kubernetes: Kubernetes/kubernetes.md
   - Gentoo:
-    - Installation: 
+    - Installation:
       - Gentoo Linux/Introduction.md
       - Gentoo Linux/Media.md
       - Gentoo Linux/Network.md
@@ -197,8 +197,8 @@ nav:
       - Gentoo Linux/Tools.md
       - Gentoo Linux/Bootloader.md
       - Gentoo Linux/Finalizing.md
-    
-  
+
+
   - Blog:
     - blog/index.md
     - 2021:
@@ -219,3 +219,4 @@ nav:
       - blog/2023/06/SubEditor.md
       - blog/2023/06/Secret-store.md
       - blog/2023/06/TmuxReference.md
+      - blog/2023/09/Vagrant.md
