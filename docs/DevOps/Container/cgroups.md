@@ -20,7 +20,7 @@ Basically, you use cgroups to control how much of a given key resource (CPU, mem
 
 The following diagram illustrates how when you allocate a particular percentage of available system resources to a cgroup (in this case cgroup‑1), the remaining percentage is available to other cgroups (and individual processes) on the system.
 
-![cgroups](../assets/images/cgroups.png)
+![cgroups](../../assets/images/cgroups.png)
 
 ## Cgroup Versions
 According to Wikipedia, the first version of cgroups was merged into the Linux kernel mainline in late 2007 or early 2008, and “the documentation of cgroups‑v2 first appeared in [the] Linux kernel … [in] 2016”. Among the many changes in version 2, the big ones are a much simplified tree architecture, new features and interfaces in the cgroup hierarchy, and better accommodation of “rootless” containers (with non‑zero UIDs).

@@ -9,7 +9,7 @@ title: k8s
 
 ## Architecture
 
-[![Kubernetes-Architecture](../assets/images/Kubernetes-Architecture.png)](../assets/images/Kubernetes-Architecture.png "Kubernetes-Architecture")
+[![Kubernetes-Architecture](../../assets/images/Kubernetes-Architecture.png)](../../assets/images/Kubernetes-Architecture.png "Kubernetes-Architecture")
 
 ### The Control plane
 

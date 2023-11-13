@@ -57,7 +57,7 @@ resource "proxmox_vm_qemu" "kube-server" {
     model = "virtio"
     bridge = "vmbr0"
   }
-  
+
   network {
     model = "virtio"
     bridge = "vmbr17"
@@ -105,7 +105,7 @@ resource "proxmox_vm_qemu" "kube-agent" {
     model = "virtio"
     bridge = "vmbr0"
   }
-  
+
   network {
     model = "virtio"
     bridge = "vmbr17"
@@ -153,7 +153,7 @@ resource "proxmox_vm_qemu" "kube-storage" {
     model = "virtio"
     bridge = "vmbr0"
   }
-  
+
   network {
     model = "virtio"
     bridge = "vmbr17"
@@ -175,7 +175,7 @@ resource "proxmox_vm_qemu" "kube-storage" {
 
 After running Terraform plan and apply, you should have 4 new VMs in your Proxmox cluster:
 
-[![KubernetesVM](../assets/images/KubernetesVM.png)](../assets/images/KubernetesVM.png "KubernetesVM")
+[![KubernetesVM](../../assets/images/KubernetesVM.png)](../../assets/images/KubernetesVM.png "KubernetesVM")
 
 ## Conclusion
 

@@ -13,8 +13,8 @@ Docker kick-started this whole revolution. Docker created a very ergonomic (nice
 
 ## Container in Docker
 
-[![Docker](../assets/images/Docker.png)](../assets/images/Docker.png "Docker")
-[![DockerArchi](../assets/images/Docker Archi.png)](../assets/images/Docker Archi.png "Docker Archi")
+[![Docker](../../assets/images/Docker.png)](../../assets/images/Docker.png "Docker")
+[![DockerArchi](../../assets/images/Docker Archi.png)](../../assets/images/Docker Archi.png "Docker Archi")
 
 <span class="rouge">docker</span> is designed to be installed on a workstation or server and comes with a bunch of tools to make it easy to build and run containers as a developer, or DevOps person.
 

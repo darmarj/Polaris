@@ -17,4 +17,4 @@ e.g:
 
 <!-- Picture Clickable Markdown
 [![Alternative Text](/path/of/image.jpg)](/path/to/image.jpg) -->
-[![Architecture](../assets/images/Architecture.png)](../assets/images/Architecture.png "Architecture")
+[![Architecture](../../assets/images/Architecture.png)](../../assets/images/Architecture.png "Architecture")

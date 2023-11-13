@@ -9,7 +9,7 @@ title: KVM
 
 In this article, I will show you how to deploy a  three-node K3s cluster on Ubuntu nodes that are created using Terraform and a local KVM [**libvirt provider**](https://github.com/dmacvicar/terraform-provider-libvirt).
 
-[![k3s-3nodes-diagram](../assets/images/k3s-3nodes-diagram.png "k3s-3nodes-diagram")](../assets/images/k3s-3nodes-diagram.png)
+[![k3s-3nodes-diagram](../../assets/images/k3s-3nodes-diagram.png "k3s-3nodes-diagram")](../../assets/images/k3s-3nodes-diagram.png)
 
 ## Creating node VMs
 
@@ -170,7 +170,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/k3s-agent.service â†
 In the same way, join the k3s-3 node.
 
 ``` bash
-# install on k3s-3, join cluster 
+# install on k3s-3, join cluster
 $ ssh -i id_rsa ubuntu@192.168.122.214 "sudo curl -sfL http://get.k3s.io | K3S_URL=https://${k3s_master}:6443 K3S_TOKEN=${node_token} sh -"
 ```
 
@@ -199,7 +199,7 @@ scp -i id_rsa whoami_traefik_example.yml ubuntu@192.168.122.213:.
 ssh -i id_rsa ubuntu@192.168.122.213
 
 # apply manifest
-$ sudo kubectl apply -f whoami_traefik_example.yml 
+$ sudo kubectl apply -f whoami_traefik_example.yml
 deployment.apps/whoami-ds created
 service/whoami-service created
 ingressroute.traefik.containo.us/whoami-ingressroute created

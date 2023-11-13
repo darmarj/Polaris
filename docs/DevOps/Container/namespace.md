@@ -6,7 +6,7 @@ title: namespace
 # Abstract
 Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources.
 
-[![Namespaces](../assets/images/cgroups-docker.jpg "cgroups-docker")](../assets/images/cgroups-docker.jpg "namespce & cgroups")
+[![Namespaces](../../assets/images/cgroups-docker.jpg "cgroups-docker")](../../assets/images/cgroups-docker.jpg "namespce & cgroups")
 
 ## [Types of Namespaces](https://man7.org/linux/man-pages/man7/namespaces.7.html)
 
@@ -25,7 +25,7 @@ Within the Linux kernel, there are different types of namespaces. Each namespace
 - A UNIX Time‑Sharing (UTS) namespace allows a single system to appear to have different host and domain names to different processes.
 
 ## An Example of Parent and Child PID Namespaces
-[![PID namespace](../assets/images/PID namespace.png)](../assets/images/PID namespace.png "PID namespace")
+[![PID namespace](../../assets/images/PID namespace.png)](../../assets/images/PID namespace.png "PID namespace")
 
 In the diagram above, there are three PID namespaces – a parent namespace and two child namespaces. Within the parent namespace, there are four processes, named PID1 through PID4. These are normal processes which can all see each other and share resources.
 

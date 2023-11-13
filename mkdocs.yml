@@ -169,34 +169,39 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: index.md
-  - Container Runtime:
-    - Containerd: Container/containerd.md
-    - Docker: Docker/docker.md
-    - Namespace: Container/namespace.md
-    - Cgroups: Container/cgroups.md
-    - Nerdctl: Container/nerdctl.md
-  - Terraform:
-    - Kubernetes: Terraform/Kubernetes.md
-    - KVM: Terraform/KVM.md
-    - Proxmox: Terraform/Proxmox.md
-  - Rancher:
-    - K3s: Rancher/K3s.md
-  - Kubernetes:
-    - Architecture: Kubernetes/architecture.md
-    - Kubernetes: Kubernetes/kubernetes.md
-  - Gentoo:
-    - Installation:
-      - Gentoo Linux/Introduction.md
-      - Gentoo Linux/Media.md
-      - Gentoo Linux/Network.md
-      - Gentoo Linux/Prepare the disks.md
-      - Gentoo Linux/Stage3.md
-      - Gentoo Linux/Base system.md
-      - Gentoo Linux/Kernel.md
-      - Gentoo Linux/System.md
-      - Gentoo Linux/Tools.md
-      - Gentoo Linux/Bootloader.md
-      - Gentoo Linux/Finalizing.md
+  - DevOps:
+    - Container Runtime:
+      - Containerd: DevOps/Container/containerd.md
+      - Docker: DevOps/Docker/docker.md
+      - Namespace: DevOps/Container/namespace.md
+      - Cgroups: DevOps/Container/cgroups.md
+      - Nerdctl: DevOps/Container/nerdctl.md
+    - Terraform:
+      - Kubernetes: DevOps/Terraform/Kubernetes.md
+      - KVM: DevOps/Terraform/KVM.md
+      - Proxmox: DevOps/Terraform/Proxmox.md
+    - Rancher:
+      - K3s: DevOps/Rancher/K3s.md
+    - Kubernetes:
+      - Architecture: DevOps/Kubernetes/architecture.md
+      - Kubernetes: DevOps/Kubernetes/kubernetes.md
+  - GNU/Linux:
+    # - Kernel:
+    - Network: Linux/Network/NetCat.md
+    # - Shell Script:
+    - Distro:
+      - Gentoo:
+        - Installation:
+          - Linux/Gentoo/Introduction.md
+          - Linux/Gentoo/Media.md
+          - Linux/Gentoo/Network.md
+          - Linux/Gentoo/Prepare the disks.md
+          - Linux/Gentoo/Stage3.md
+          - Linux/Gentoo/Base system.md
+          - Linux/Gentoo/Kernel.md
+          - Linux/Gentoo/System.md
+          - Linux/Gentoo/Tools.md
+          - Linux/Gentoo/Bootloader.md
 
 
   - Blog:

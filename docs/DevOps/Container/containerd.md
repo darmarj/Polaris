@@ -8,14 +8,14 @@ title: containerd
 Containerd – An abstraction of kernel features that provides a relatively high level container interface. Other software projects can use this to run containers and manage container images.
 
 __Ecosystem__
-![Ecosystem](../assets/images/Ecosystem.png "Ecosystem")
+![Ecosystem](../../assets/images/Ecosystem.png "Ecosystem")
 
 ## Container Runtime Interface (CRI)
 
 __CRI is the API that Kubernetes uses to control the different runtimes that create and manage containers.__
 
 __CRI__ makes it easier for Kubernetes to use different container runtimes. Instead of the Kubernetes project having to manually add support for each runtime, the __CRI API__ describes how Kubernetes interacts with each runtime. So it’s up to the runtime how to actually manage containers, as long as it __*obeys*__ the CRI API.
-![CRI](../assets/images/CRI.png "CRI")
+![CRI](../../assets/images/CRI.png "CRI")
 
 So if you prefer to use [containerd](#containerd) to run your containers, you can. Or, if you prefer to use __CRI-O__, then you can. This is because both of these runtimes implement the [CRI](#container-runtime-interface-cri) spec.
 
@@ -81,9 +81,9 @@ runc provides all of the low-level functionality for containers, interacting wit
 A couple of alternatives to __runc__ are:
 
 - crun a container runtime written in C (by contrast, runc is written in Go.)
-  
+
 - kata-runtime from the Katacontainers project, which implements the OCI specification as individual lightweight VMs (hardware virtualisation
-  
+
 - gVisor from Google, which creates containers that have their own kernel. It implements OCI in its runtime called runsc.
 
 ??? question "What's the equivalent of runc on Windows?"
