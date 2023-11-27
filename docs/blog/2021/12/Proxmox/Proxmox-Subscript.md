@@ -12,7 +12,7 @@ search:
 
 !!! note
 
-    Move into **/usr/share/javascript/proxmox-widget-toolkit/pvemanagerlib.js** and chage as following:
+    Move into **/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js** and chage as following:
 
 __Code__
 
