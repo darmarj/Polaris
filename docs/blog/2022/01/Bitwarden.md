@@ -1,14 +1,14 @@
 ---
 template: overrides/main.html
 description: >
-  Proxmox v7 Subscription disable
+  vaultWarden implementation
 search:
   exclude: true
 ---
 
-# Bitwarden_rs
+# vaultBitwarden
 
-__This is a Bitwarden server API implementation written in Rust compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the [official](https://github.com/liuchenx/bitwarden_rs) resource-heavy service might not be ideal.__
+__This is a Bitwarden server API implementation written in Rust compatible with upstream Bitwarden clients*, perfect for self-hosted deployment where running the [official](https://github.com/dani-garcia/vaultwarden) resource-heavy service might not be ideal.__
 
 ## Features
 Basically full implementation of Bitwarden API is provided including:
@@ -23,55 +23,72 @@ Basically full implementation of Bitwarden API is provided including:
  * YubiKey OTP
 
 ## Installation
-Cert:
-``` bash
-openssl req -x509 -newkey rsa:4096 -keyout $NAME.key \
--out $NAME.crt -days 720 -nodes
+Work_Dir:
+```shell
+mkdir ${WORK_DIR}
 ```
-Container:
-``` bash
-e.g. 
-$SSL_PATH = bitwarden/ssl
-$CONTAINER NAME = bitwarden
 
-docker run -d --restart always --name $CONTAINER NAME -e \
-ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
--v /$HOME/bitwarden/ssl/:/ssl/ \
--v /$HOME/bitwarden/bw-data:/data/ \
--p 443:80 bitwardenrs/server:latest
+  [__Work_Dir__]: #installation
+
+Cert:
+``` shell title="certification"
+openssl req -x509 -newkey rsa:4096 -keyout ${NAME}.key \
+-out ${NAME}.crt -days 720 -nodes
 ```
+
+Container:
+``` shell title="docker run"
+# Get into the Work_Dir and run following dockers command
+
+docker run -d --restart always --name ${CONTAINER_NAME} -e \
+ROCKET_TLS='{certs="/${SSL_PATH}/${SSL_NAME}.crt",key="/${SSL_PATH}/${SSL_NAME}.key"}' \
+-v /$HOME/vaultwarden/ssl/:/ssl/ \
+-v /$HOME/vaultwarden/vw-data:/data/ \
+-p 443:80 vaultwarden/server:latest
+```
+
+!!! Warning
+    ${SSL_PATH} should be resided at the same path in [__Work_Dir__] when invoke the docker run.
+
+!!! Note
+    -e      set the environment
+
+    -v      set the volume
+
+    -p      set the port
+
 [DB Backup](https://github.com/dani-garcia/vaultwarden/issues/975):
 
 === ":octicons-plug-16: Systemd"
-	``` toml
+	``` toml title="systemd.service"
 	[Unit]
 	Description=bitwarden-watch-for-changes
-	
+
 	[Service]
 	Type=simple
 	ExecStart=/home/USER/bitwardenrs/watch-for-changes.sh
 	Restart=always
 	WorkingDirectory=/home/USER
-	
+
 	[Install]
 	WantedBy=multi-user.target
 	```
-	!!! Warning
-		``` bash
-		# sudo sed -i 's/^SELINUX=.*/SELINUX=[disabled|permissive]/g' /etc/selinux/config && sudo sestatus
-		# sudo reboot
-		# sudo cp /PATH/bitwarden-watch-for-changes.service /etc/systemd/system/multi-user.target.wants
-		# sudo systemctl enable/start/status bitwarden-watch-for-changes.service
-		# sudo journalctl			//troubleshoot
-		# sudo chmod +x watch-for-changes.shd
-		```
+
+    ``` shell title="systemd.sh"
+	sudo sed -i 's/^SELINUX=.*/SELINUX=[disabled|permissive]/g' /etc/selinux/config && sudo sestatus
+	sudo reboot
+	sudo cp /PATH/bitwarden-watch-for-changes.service /etc/systemd/system/multi-user.target.wants
+	sudo systemctl enable/start/status bitwarden-watch-for-changes.service
+	sudo journalctl			//troubleshoot
+	sudo chmod +x watch-for-changes.shd
+	```
 
 === ":octicons-telescope-16: Bash"
-	``` bash
+	``` shell title="watcher.sh"
 	#!/usr/bin/env bash
 	export PATH=/usr/local/inotify-tools/bin/
 	path_to_watch=/home/USER/bitwardenrs/bw-data
-	
+
 	inotifywait -m "$path_to_watch" -e create -e moved_to -e modify |
 		while read path action file; do
   		if [[ $file =~ (wal|config.json) ]]; then
@@ -80,48 +97,52 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 		done
 	```
 	!!! Note "[inotify-tools](https://docs.rockylinux.org/books/learning_rsync/06_rsync_inotify/): inotify's features to be used from within shell scripts"
-		``` bash
-		# dnf -y install autoconf automake libtool
-		# wget -c https://github.com/inotify-tools/inotify-tools/archive/refs/tags/3.21.9.6.tar.gz
-		# tar -zvxf 3.21.9.6.tar.gz -C /usr/local/src/
-		# cd /usr/local/src/inotify-tools-3.21.9.6/
-		# ./autogen.sh && \
+		``` shell
+		dnf -y install autoconf automake libtool
+
+		wget -c https://github.com/inotify-tools/inotify-tools/archive/refs/tags/3.21.9.6.tar.gz
+
+		tar -zvxf 3.21.9.6.tar.gz -C /usr/local/src/
+        ```
+        ``` shell
+		cd /usr/local/src/inotify-tools-3.21.9.6/
+		./autogen.sh && \
 			./configure --prefix=/usr/local/inotify-tools && \
 			make && \
 			make install
-		# ls /usr/local/inotify-tools/bin/
+		ls /usr/local/inotify-tools/bin/
 		```
 	!!! Tip "[Github Reference](https://github.com/inotify-tools/inotify-tools)"
 
 === ":octicons-database-16: DB"
-	``` bash
+	``` shell title="db-backup.sh"
 	#!/usr/bin/env bash
-	
+
 	set -e
-	
+
 	bitwarden_folder_updated=/home/USER/bitwarden/bitwarden-folder-updated
 	touch $bitwarden_folder_updated
-	
+
 	if [[ "$(cat $bitwarden_folder_updated)" == "1" ]]; then
   	rm -f /home/USER/bw-bk.tar.gz
-	
+
   	docker exec bitwarden bash -c 'mkdir -p /data/db-backup && sqlite3 /data/db.sqlite3 ".backup /data/db-backup/backup.sqlite3"'
-	
+
   	cd /home/USER/bitwarden/bw-data
   	tar -czvf /home/USER/bw-bk.tar.gz \
     	config.json \
     	icon_cache \
     	db-backup/backup.sqlite3
-	
+
   	cd /home/USER/bitwarden/
   	tar -czvf /home/USER/bw-scripts.tar.gz \
     	backup.sh \
     	bitwarden-watch-for-changes.service \
     	watch-for-changes.sh
-	
+
 	mv /home/USER/bw-bk.tar.gz /SMB,NFS.AW3.../BitwardenBak/bw-bk-$(date +"%Y-%m-%d").tar.gz
 	mv /home/USER/bw-scripts.tar.gz /SMB,NFS.AW3.../BitwardenBak/bw-scripts-$(date +"%Y-%m-%d").tar.gz
-	
+
   	echo "0" > /home/USER/bitwarden/bitwarden-folder-updated
 	else
   	echo 'nothing to backup'
@@ -131,7 +152,7 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 
 		=== ":octicons-code-square-16: [sqlite3](https://sqlite.org/index.html): curl the source and complie."
 
-			``` bash
+			``` shell
 				# dnf install make, gcc
 				# tar xvfz sqlite-autoconf-<version>.tar.gz
 				# cd sqlite-autoconf-<version>
@@ -142,17 +163,16 @@ ROCKET_TLS='{certs="/$SSL_PATH/$SSL_NAME.crt",key="/$SSL_PATH/$SSL_NAME.key"}' \
 
 		=== ":octicons-code-square-16: sqlite3 in docker env:"
 
-			``` bash
+			``` shell
 				# docker exec -it CONTAINER bash -c 'cp /datasource/sqlite3 /usr/local/bin'
 			```
 
 === ":octicons-megaphone-16: Crontab"
 	!!! example
-		``` bash
+		``` shell
 		crontab -e
 		0 3 * * * $PATH/*.sh > /dev/null 2>&1	# Rsync on 3:00 AM
 		0 * * * * $PATH/*.sh > /dev/null 2>&1	# Rsync every hour
-		
+
 		crontab -l				# List the schedule
 		```
-
